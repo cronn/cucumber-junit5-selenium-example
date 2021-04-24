@@ -21,7 +21,11 @@ on:
     branches: [ main ]
   schedule:
     - cron: '22 14 * * 1'
-
+env:
+  JAVA_VERSION: 16
+  JAVA_PACKAGE: jdk
+  JAVA_ARCH: x64
+  JAVA_DISTRO: adopt
 jobs:
   analyze:
     name: Analyze
@@ -41,8 +45,10 @@ jobs:
     - name: Set up JDK 16
       uses: actions/setup-java@v2
       with:
-        java-version: 16
-        distribution: 'adopt'
+        java-version: ${{ env.JAVA_VERSION }}
+        java-package: ${{ env.JAVA_PACKAGE }}
+        architecture: ${{ env.JAVA_ARCH }}
+        distribution: ${{ env.JAVA_DISTRO }}
     - uses: actions/cache@v2.1.5
       with:
         path: ~/.m2/repository

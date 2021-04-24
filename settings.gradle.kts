@@ -1,4 +1,4 @@
-rootProject.name = "cucumber-junit5-example"
+rootProject.name = "cucumber-junit5-selenium-example"
 
 dependencyResolutionManagement {
     repositories {

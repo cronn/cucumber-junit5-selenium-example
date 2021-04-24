@@ -19,6 +19,12 @@ dependencies {
     testImplementation("io.cucumber:cucumber-picocontainer:latest.release") {
         because("we want to use dependency injection in our Cucumber tests - remove this if you don't")
     }
+    testImplementation("org.seleniumhq.selenium:selenium-java:latest.release") {
+        because("we want to use Selenium to remote control browsers")
+    }
+    testImplementation("io.github.bonigarcia:webdrivermanager:latest.release") {
+        because("we want someone else to manage webdrivers")
+    }
 }
 
 tasks {
@@ -33,12 +39,6 @@ tasks {
         ignoreFailures = true
         // OPTIONAL: Copy all system properties from the command line (-D...) to the test environment
         systemProperties(project.gradle.startParameter.systemPropertiesArgs)
-        // OPTIONAL: Enable parallel test execution
-        systemProperty("cucumber.execution.parallel.enabled", true)
-        // OPTIONAL: Set parallel execution strategy (defaults to dynamic)
-        systemProperty("cucumber.execution.parallel.config.strategy", "fixed")
-        // OPTIONAL: Set the fixed number of parallel test executions. Only works for the "fixed" strategy defined above
-        systemProperty("cucumber.execution.parallel.config.fixed.parallelism", 4)
         // OPTIONAL: Enable Cucumber plugins, enable/disable as desired
         systemProperty("cucumber.plugin", "message:build/reports/cucumber.ndjson, timeline:build/reports/timeline, html:build/reports/cucumber.html")
         // OPTIONAL: Don't show Cucumber ads

@@ -1,29 +1,30 @@
-# Cucumber with JUnit5
+# Cucumber with JUnit5 and Selenium
 
-This repository contains an example project that integrates [Cucumber](https://cucumber.io/) with [JUnit5](https://junit.org/junit5/). It is the same setup explained in the [blog post](https://www.blog.cronn.de/en/testing/2020/08/17/cucumber-junit5.html).
+This repository contains an example project that integrates [Cucumber](https://cucumber.io/) with [JUnit5](https://junit.org/junit5/) and [Selenium](https://www.selenium.dev/). It is the same setup explained in the [blog post](TODO). It is based on [cucumber-junit5-example](https://github.com/cronn/cucumber-junit5-example).
 
 ## Quick Start
 
 ```shell
-$ git clone https://github.com/cronn/cucumber-junit5-example your-own-tests
+$ git clone https://github.com/cronn/cucumber-junit5-selenium-example your-own-tests
 $ cd your-own-tests
 $ ./gradlew test
 ```
 
-Gradle will execute all feature files which are located in the same package as [BuildToolSupport](https://github.com/cronn/cucumber-junit5-example/blob/main/src/test/java/com/example/BuildToolSupport.java) or any subpackage of that. In order to filter execution to just a subset of all features, use the `cucumber.filter.tags` option like this:
+The [BrowserState]() class is responsible for opening/closing new browser instances during test execution. It supports multiple environment variable in order to customize the browser for each execution:
 
-```shell script
-$ ./gradlew test -Dcucumber.filter.tags="@first or @awesome"
+- `browser`: Defines which browser should be started. Allows `CHROME`, `CHROMIUM`, and `FIREFOX`. Defaults to `CHROME`.
+- `lang`: The language used by the browser as a 2-letter country code. Defaults to `en`.
+- `width`: The width of the browser window. Defaults to `1200`.
+- `height`: The height of the browser window. Defaults to `1024`.
+- `device`: If specified, overwrites `width` and `height` with the selected device preset. Allows `mobile`, `tablet`, and `desktop`.
+- `timeout`: The default timeout which is used during page/script loading. Defaults to 15 (seconds).
+
+Define them while calling Gradle like this:
+
+```shell
+$ ./gradlew test -Dbrowser=firefox -Dlang=de -Ddevice=tablet ...
 ```
 
-In order to ignore just a subset of features, use the `cucumber.filter.tags` option like this:
-
-```shell script
-$ ./gradlew test -Dcucumber.filter.tags="not @second"
-```
-
-[build.gradle.kts](https://github.com/cronn/cucumber-junit5-example/blob/main/build.gradle.kts#L36) uses `cucumber.execution.parallel.enabled` to enable parallel test execution by default. Additionally, it uses the `cucumber.plugin` option to write a reports file to `build/reports/cucumber.ndjson`, an execution timeline to `build/reports/timeline` and an HTML report to `build/reports/cucumber.html`. All Cucumber features/rules/examples/scenarios annotated with `@disabled` are filtered by default and are not executed. This project declares an extra dependency to [picocontainer](http://picocontainer.com/) in order to show dependency injection within tests - remove it in case you don't need it.
-
-Note that while this project uses the JUnit5 platform, it only requires the jupiter-api in order use JUnit 5 assertions. Replace this dependency in case you want to use another assertion library like [AssertJ](https://assertj.github.io/doc/). If you are planning on running regular JUnit 5 tests along with your Cucumber examples/scenarios, add a dependency to jupiter-engine. The Gradle configuration is annotated to help you make changes for your own test setup, thus feel free to modify it!
+The page interaction is handled by [page objects](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) which use the Selenium API to remote control a browser. The Cucumber step definitions are used to glue examples/scenarios to those page objects. We are testing the cronn homepage here, so you'll probably want to change that in your own tests, however you could keep the structure and general setup of state/steps/pages.
 
 [<img src="https://www.cronn.de/img/logo_name_rgb_1200x630.png" alt="cronn GmbH" width="200"/>](https://www.cronn.de/)

@@ -1,3 +1,3 @@
 shell
-gradle:jdk15
+cronn/jdk-chrome-firefox:latest
 /bin/bash
