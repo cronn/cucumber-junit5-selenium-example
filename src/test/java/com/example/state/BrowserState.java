@@ -87,7 +87,7 @@ public class BrowserState {
       driver.manage().window().setSize(new Dimension(width, height));
     } else {
       driver.manage().window().setSize(DEVICE_PRESETS.getOrDefault(Properties.device(),
-          new Dimension(800, 600)));
+          new Dimension(Properties.width(), Properties.height())));
     }
   }
 
