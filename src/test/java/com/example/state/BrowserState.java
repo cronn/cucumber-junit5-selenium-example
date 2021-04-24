@@ -81,14 +81,8 @@ public class BrowserState {
   }
 
   private void setupWindowSize() {
-    if (Properties.device().isBlank()) {
-      final int width = Properties.width();
-      final int height = Properties.height();
-      driver.manage().window().setSize(new Dimension(width, height));
-    } else {
-      driver.manage().window().setSize(DEVICE_PRESETS.getOrDefault(Properties.device(),
-          new Dimension(Properties.width(), Properties.height())));
-    }
+    driver.manage().window().setSize(DEVICE_PRESETS.getOrDefault(Properties.device(),
+        new Dimension(Properties.width(), Properties.height())));
   }
 
   private void setupTimeouts() {
