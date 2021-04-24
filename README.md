@@ -10,7 +10,7 @@ $ cd your-own-tests
 $ ./gradlew test
 ```
 
-The [BrowserState](https://github.com/cronn/cucumber-junit5-selenium-example/blob/main/src/test/java/com/example/state/BrowserState.java) class is responsible for opening/closing new browser instances during test execution. It supports multiple environment variable in order to customize the browser for each execution:
+The [BrowserState](https://github.com/cronn/cucumber-junit5-selenium-example/blob/main/src/test/java/com/example/state/BrowserState.java) class is responsible for opening/closing new browser instances during test execution Additionally, it attaches a screenshot of the current browser viewport in case an example/scenario fails. It supports multiple environment variable in order to customize the browser for each test execution:
 
 - `browser`: Defines which browser should be started. Allows `CHROME`, `CHROMIUM`, and `FIREFOX`. Defaults to `CHROME`.
 - `lang`: The language used by the browser as a 2-letter country code. Defaults to `en`.
@@ -28,5 +28,7 @@ $ ./gradlew test -Dbrowser=firefox -Dlang=de -Ddevice=tablet ...
 The page interaction is handled by [page objects](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) which use the Selenium API to remote control a browser. The Cucumber step definitions are used to glue examples/scenarios to those page objects. We are testing the cronn homepage here, so you'll probably want to change that in your own tests, however you could keep the structure and general setup of state/steps/pages.
 
 The GitHub [workflow](https://github.com/cronn/cucumber-junit5-selenium-example/blob/main/.github/workflows/gradle.yml#L29-L33) executes the same scenarios across multiple dimensions in a configuration matrix.
+
+Note that this setup relies on browsers which are installed locally on your system. It will however automatically download the correct web driver for the browser you selected, thanks to the [WebDriverManager](https://github.com/bonigarcia/webdrivermanager). In case you want to use a different method to setup and initialize web drivers, change the implementation in `BrowserState` accordingly, e.g. by using [testcontainers](https://www.testcontainers.org/modules/webdriver_containers/).
 
 [<img src="https://www.cronn.de/img/logo_name_rgb_1200x630.png" alt="cronn GmbH" width="200"/>](https://www.cronn.de/)
