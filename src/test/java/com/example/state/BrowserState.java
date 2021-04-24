@@ -29,9 +29,9 @@ public class BrowserState {
   private static final String FIREFOX = "FIREFOX";
   private static final Set<String> SUPPORTED_BROWSERS = Set.of(CHROME, CHROMIUM, FIREFOX);
   private static final Map<String, Dimension> DEVICE_PRESETS = Map.of(
-      "mobile", new Dimension(375, 812),
-      "tablet", new Dimension(1024, 768),
-      "desktop", new Dimension(1200, 1024)
+      "mobile", new Dimension(375, 812), // iPhone X
+      "tablet", new Dimension(1024, 768), // iPad horizontal
+      "desktop", new Dimension(1200, 1024) // smallish desktop
   );
 
   private static boolean managerInitialized = false;
