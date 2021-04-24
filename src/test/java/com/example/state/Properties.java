@@ -29,4 +29,8 @@ public class Properties {
     return Integer.getInteger("timeout", 15);
   }
 
+  public static boolean headless() {
+    return Boolean.parseBoolean(System.getProperty("headless", "true"));
+  }
+
 }

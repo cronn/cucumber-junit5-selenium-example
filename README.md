@@ -18,6 +18,7 @@ The [BrowserState](https://github.com/cronn/cucumber-junit5-selenium-example/blo
 - `height`: The height of the browser window. Defaults to `1024`.
 - `device`: If specified, overwrites `width` and `height` with the selected device preset. Allows `mobile`, `tablet`, and `desktop`.
 - `timeout`: The default timeout which is used during page/script loading. Defaults to 15 (seconds).
+- `headless`: Controls whether browsers should be executed headless. Defaults to `true`, watch your browser at work with `false` or any other value.
 
 Define them while calling Gradle like this:
 

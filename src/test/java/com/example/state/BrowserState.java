@@ -65,7 +65,7 @@ public class BrowserState {
 
   private void setupChrome(final String browserLang) {
     final var options = new ChromeOptions();
-    options.setHeadless(true);
+    options.setHeadless(Properties.headless());
     options.addArguments("--no-sandbox");
     options.addArguments("--lang=" + browserLang);
     final var prefs = Map.of("intl.accept_languages", browserLang);
@@ -75,7 +75,7 @@ public class BrowserState {
 
   private void setupFirefox(final String browserLang) {
     final var options = new FirefoxOptions();
-    options.setHeadless(true);
+    options.setHeadless(Properties.headless());
     options.addPreference("intl.accept_languages", browserLang);
     driver = new FirefoxDriver(options);
   }
