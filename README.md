@@ -27,4 +27,6 @@ $ ./gradlew test -Dbrowser=firefox -Dlang=de -Ddevice=tablet ...
 
 The page interaction is handled by [page objects](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) which use the Selenium API to remote control a browser. The Cucumber step definitions are used to glue examples/scenarios to those page objects. We are testing the cronn homepage here, so you'll probably want to change that in your own tests, however you could keep the structure and general setup of state/steps/pages.
 
+The GitHub [workflow](https://github.com/cronn/cucumber-junit5-selenium-example/blob/main/.github/workflows/gradle.yml#L29-L33) executes the same scenarios across multiple dimensions in a configuration matrix.
+
 [<img src="https://www.cronn.de/img/logo_name_rgb_1200x630.png" alt="cronn GmbH" width="200"/>](https://www.cronn.de/)
