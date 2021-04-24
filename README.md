@@ -10,7 +10,7 @@ $ cd your-own-tests
 $ ./gradlew test
 ```
 
-The [BrowserState]() class is responsible for opening/closing new browser instances during test execution. It supports multiple environment variable in order to customize the browser for each execution:
+The [BrowserState](https://github.com/cronn/cucumber-junit5-selenium-example/blob/main/src/test/java/com/example/state/BrowserState.java) class is responsible for opening/closing new browser instances during test execution. It supports multiple environment variable in order to customize the browser for each execution:
 
 - `browser`: Defines which browser should be started. Allows `CHROME`, `CHROMIUM`, and `FIREFOX`. Defaults to `CHROME`.
 - `lang`: The language used by the browser as a 2-letter country code. Defaults to `en`.
