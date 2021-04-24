@@ -2,8 +2,20 @@ name: Run Tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - "build.gradle.kts"
+      - "gradle.lockfile"
+      - "settings.gradle.kts"
+      - "src/**"
+      - "gradle/**"
   pull_request:
     branches: [ main ]
+    paths:
+      - "build.gradle.kts"
+      - "gradle.lockfile"
+      - "settings.gradle.kts"
+      - "src/**"
+      - "gradle/**"
 env:
   JAVA_VERSION: 16
   JAVA_PACKAGE: jdk
