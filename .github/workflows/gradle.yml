@@ -33,7 +33,7 @@ jobs:
         language: [ en, de, fr ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.5
     - name: Set up Java
       uses: actions/setup-java@v2
       with:
