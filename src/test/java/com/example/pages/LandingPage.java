@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 
 /**
  * Page object that represents the landing page of cronn.de.
- * 
+ *
  * @see <a href="https://cronn.de/">cronn.de</a>
  */
 public class LandingPage extends LoadableComponent<LandingPage> {
@@ -21,11 +21,11 @@ public class LandingPage extends LoadableComponent<LandingPage> {
   public LandingPage(final WebDriver driver) {
     this.driver = driver;
   }
-  
+
   public boolean isSloganVisible() {
     return slogan.isDisplayed();
   }
-  
+
   @Override
   protected void load() {
     driver.get("https://cronn.de/");

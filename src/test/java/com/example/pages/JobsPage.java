@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 
 /**
  * Page object that represents the jobs page of cronn.de.
- * 
+ *
  * @see <a href="https://www.cronn.de/jobs/">cronn.de/jobs</a>
  */
 public class JobsPage extends LoadableComponent<JobsPage> {
@@ -22,11 +22,11 @@ public class JobsPage extends LoadableComponent<JobsPage> {
   public JobsPage(final WebDriver driver) {
     this.driver = driver;
   }
-  
+
   public boolean isTitleVisible() {
     return title.isDisplayed();
   }
-  
+
   @Override
   protected void load() {
     final var lang = Properties.language();

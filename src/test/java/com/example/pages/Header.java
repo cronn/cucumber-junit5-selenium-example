@@ -2,7 +2,6 @@ package com.example.pages;
 
 import com.example.state.Properties;
 import java.time.Duration;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +18,7 @@ public class Header {
 
   @FindBy(xpath = "//div[contains(@class, 'nav-item-title') and contains(text(), 'Jobs')]")
   private WebElement jobs;
-  
+
   @FindBy(xpath = "//i[@class='fal fa-bars font-l']")
   private WebElement burgerMenu;
 
